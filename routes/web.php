@@ -5,10 +5,16 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\LaporanController;
 
 Route::get('/login',
     [AuthController::class,'loginForm'])
     ->name('login');
+    
+Route::get(
+    '/laporan-penjualan',
+    [LaporanController::class,'penjualan']
+);
 
 Route::post('/login',
     [AuthController::class,'login']);
