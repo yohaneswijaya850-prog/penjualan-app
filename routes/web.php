@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SaleController;
 
 Route::get('/login',
     [AuthController::class,'loginForm'])
@@ -87,5 +88,14 @@ Route::get(
         '/kategori/hapus/{id}',
         [CategoryController::class,'destroy']
     );
+    Route::get(
+    '/penjualan',
+    [SaleController::class,'index']
+);
+
+Route::post(
+    '/penjualan/simpan',
+    [SaleController::class,'store']
+);
 
 });
