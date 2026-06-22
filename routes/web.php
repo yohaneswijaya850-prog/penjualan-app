@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 
 Route::get('/login',
@@ -27,7 +28,36 @@ Route::get('/transaksi', function () {
 })->middleware('auth');
 
 Route::middleware('auth')->group(function(){
+    
+Route::get(
+    '/produk',
+    [ProductController::class,'index']
+);
 
+Route::get(
+    '/produk/tambah',
+    [ProductController::class,'create']
+);
+
+Route::post(
+    '/produk/simpan',
+    [ProductController::class,'store']
+);
+
+Route::get(
+    '/produk/edit/{id}',
+    [ProductController::class,'edit']
+);
+
+Route::post(
+    '/produk/update/{id}',
+    [ProductController::class,'update']
+);
+
+Route::get(
+    '/produk/hapus/{id}',
+    [ProductController::class,'destroy']
+);
     Route::get(
         '/kategori',
         [CategoryController::class,'index']
