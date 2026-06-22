@@ -20,8 +20,39 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\Sale;
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+
+    $totalKategori =
+    Category::count();
+
+    $totalProduk =
+    Product::count();
+
+    $totalTransaksi =
+    Sale::count();
+
+    $chartData =
+    Sale::selectRaw(
+        'tanggal, COUNT(*) as total'
+    )
+    ->groupBy('tanggal')
+    ->orderBy('tanggal')
+    ->get();
+
+    return view(
+        'dashboard',
+        compact(
+            'totalKategori',
+            'totalProduk',
+            'totalTransaksi',
+            'chartData'
+        )
+    );
+
 })->middleware('auth');
 
 Route::get('/transaksi', function () {
