@@ -99,11 +99,19 @@ data: totals
 
 </script>
 
-<br>
+<hr>
 
-<a href="/logout">
-Logout
-</a>
+<a href="/dashboard">Dashboard</a> |
+
+<a href="/kategori">Kategori</a> |
+
+<a href="/produk">Produk</a> |
+
+<a href="/penjualan">Penjualan</a> |
+
+<a href="/laporan-penjualan">Cetak PDF</a> |
+
+<a href="/logout">Logout</a>
 
 </body>
 </html>

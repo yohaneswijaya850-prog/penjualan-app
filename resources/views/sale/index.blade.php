@@ -1,5 +1,13 @@
 <h1>Transaksi Penjualan</h1>
 
+@if(session('error'))
+
+<p style="color:red;">
+    {{ session('error') }}
+</p>
+
+@endif
+
 <form
 action="/penjualan/simpan"
 method="POST">

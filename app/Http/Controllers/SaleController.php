@@ -22,14 +22,22 @@ class SaleController extends Controller
 
     public function store(Request $request)
     {
-        $product =
-        Product::findOrFail(
-            $request->product_id
-        );
+       $product =
+Product::findOrFail(
+    $request->product_id
+);
 
-        $subtotal =
-        $product->harga *
-        $request->qty;
+if($request->qty > $product->stok)
+{
+    return back()->with(
+        'error',
+        'Stok tidak mencukupi'
+    );
+}
+
+$subtotal =
+$product->harga *
+$request->qty;
 
         $sale = Sale::create([
             'user_id' => Auth::id(),
